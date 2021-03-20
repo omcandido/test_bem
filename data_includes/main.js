@@ -15,6 +15,7 @@ const targetClothes = drawRandomSample(baseClothes, 6)
 // Merge all drawn words for convenience to log them.
 const targetWords = targetFood.concat(targetAnimals, targetOccupations, targetClothes)
 
+// Parameters regarding the display and waiting time of single words.
 const displayTime = 300;
 const waitTime = 10;
 
@@ -42,14 +43,37 @@ newTrial("welcome",
 
 // ------------- Relaxation screen -------------
 newTrial("instructions-relaxation",
-    defaultText.center().print()
+    newVar("secondsLeft", 180)
     ,
-    newText("Relaxation screen. TODO: This is supposed to be a 3-min relaxing video screen.")
+    newText("Watch the following video for 3 min and try to relax:")
+        .css("margin-bottom", "1em")
     ,
-    newButton("Click to start the experiment")
+    newVideo("myVideo", "relax_video.mp4")
         .center()
+        .size("600","337.5")
         .print()
-        .wait()
+        .disable(0.01)
+        .play()
+    ,
+    newText("counter", '180')
+        .before( newText("Seconds left: ") )
+        .print()
+    ,
+    newTimer("timer", 1000)
+        .callback(
+            getVar("secondsLeft")
+                .set(v=>v-1)
+                .test.is(0)
+                .success( getButton("Next").click() )
+            ,
+            getText("counter")
+                .text( getVar("secondsLeft") )
+            ,
+            getTimer("timer").start()
+        )
+        .start()
+    ,
+    newButton('Next').wait()
 );
 
 // ------------- Instructions training -------------
