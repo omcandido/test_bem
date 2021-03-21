@@ -41,9 +41,13 @@ newTrial("welcome",
 // ------------- Demographics questions -------------
 newTrial( "demographics-age",
     newText("What is your age?")
+        .css("margin-bottom", "1em")
         .print()
     ,
-    newTextInput("age-input").print()
+    newTextInput("age-input")
+        .size(50)
+        .css("margin-bottom", "2em")
+        .print()
     ,
     newText("warning", "Enter a valid number (e.g. 25)").css("color", "red")
     ,
@@ -54,14 +58,16 @@ newTrial( "demographics-age",
         )
 )
 
-newTrial( "demographics-gender" ,
-  newText("What is your gender?")
-    .print()
-  ,
-  newScale("gender", "male", "female", "other")
-    .labelsPosition("top")
-    .print()
-    .wait()
+newTrial("demographics-gender",
+    newText("What is your gender?")
+        .print()
+    ,
+    newScale("gender", "male", "female", "other")  
+        .button()
+        .center()
+        .labelsPosition("top")
+        .print()
+        .wait()
 )
 
 
@@ -69,10 +75,10 @@ newTrial("demographics-bored",
     newText("I am easily bored")
         .print()
     ,
-    newScale(5)
-        .before( newText("Very untrue") )
-        .after( newText("Very true") )
-        .keys()
+    newScale("bored", "Very untrue", "Untrue", "Neutral", "True", "Very True")  
+        .button()
+        .center()
+        .labelsPosition("top")
         .print()
         .wait()
 )
@@ -81,10 +87,10 @@ newTrial("demographics-movies",
     newText("I often enjoy seeing movies I’ve seen before")
         .print()
     ,
-    newScale(5)
-        .before( newText("Very untrue") )
-        .after( newText("Very true") )
-        .keys()
+    newScale("movies", "Very untrue", "Untrue", "Neutral", "True", "Very True")
+        .button()
+        .center()
+        .labelsPosition("top")
         .print()
         .wait()
 )
