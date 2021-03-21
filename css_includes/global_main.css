@@ -46,7 +46,7 @@ span.retry:visited {
   color: blue;
 }
 
-.option {
+.option label {
   margin: 10px;
   /* border: solid; */
   border-radius: 10px;
@@ -54,6 +54,6 @@ span.retry:visited {
   background-color: rgb(225 225 225);
 }
 
-.option:hover {
+.option label:hover {
   background-color: rgb(206 207 207);
 }
