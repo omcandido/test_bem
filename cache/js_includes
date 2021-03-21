@@ -1833,7 +1833,7 @@ function generateElementsDisplayWords(words) {
  * @param {int} waitTime Milliseconds to wait between each word.
  */    
 newTrialDisplayCategoryWords = (trialName, category, words, displayTime, waitTime) => newTrial(trialName,
-    newText('instructions', 'You will now see 6 ' + category.toUpperCase() + ' words. Please try to visualise each of them.')
+    newText('instructions', 'You will now see 6 ' + category.toUpperCase() + ' words. Please try to visualise each of them.<br>Click on the button when you are ready.')
         .css("margin-bottom", "2em")
         .print()
     ,
@@ -1927,7 +1927,7 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
     newText("<h3>Please click on all words of the category: " + category.toUpperCase() + "</h3>")
         .print()
     ,
-    newText("If you click on a word of the right category, it will turn red. There is a total of 6 words.")
+    newText("There is a total of 6 words.")
         .css("margin-bottom", "2em")
         .print()
     ,
@@ -1960,7 +1960,7 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     newText("<h3>Enter all these " + category.toUpperCase() + " words.</h3>")
         .print()
     ,
-    newText("Please enter the 6 words below in its corresponding box on the right. Enter only one word per box. Click the button when you are done.")
+    newText("Please enter the 6 words below in its corresponding box on the right. Enter only one word per box. Click on the button when you are done.")
         .css("margin-bottom", "2em")
         .print()
     ,

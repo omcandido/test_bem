@@ -21,6 +21,11 @@ const waitTime = 10;
 
 // DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
 
+// Wait 300ms between trials.
+Header(
+    newTimer('waitBeforeTrials', 300).start().wait()
+)
+
 // ------------- Welcome screen -------------
 newTrial("welcome",
     // Automatically print all Text elements, centered
@@ -179,9 +184,13 @@ newTrial("recall-trial",
 
 // ------------- Instructions training 1 -------------
 newTrial("instructions-training-1",
-    defaultText.center().print().css("margin-bottom", "2em")
+    newText("<h3>Second part</h3>")
+        .print()
     ,
-    newText("Now you will be asked to visualise again some of the words you saw before. As in the first exercise, try to picture in your mind what each word represents. Click on the button when you are ready.")    
+    newText("Now you will be asked to visualise again some of the words you saw before. As in the first exercise, try to picture in your mind what each word represents.")
+        .center()
+        .print()
+        .css("margin-bottom", "2em")
     ,
     newButton("Next")
         .center()
@@ -197,9 +206,10 @@ newTrialDisplayCategoryWords("show-clothes-words-trial", 'clothes', targetClothe
 
 // ------------- Instructions training 2-------------
 newTrial("instructions-training-2",
-    defaultText.center().print().css("margin-bottom", "2em")
-    ,
-    newText("Finally, you will be shown 24 of the previous words. Please follow the instructions in the following screens. Click on the button when you are ready.")
+    newText("Finally, you will be shown a table with 24 of the previous words. Please follow the instructions in the following screens.")
+        .center()
+        .print()
+        .css("margin-bottom", "2em")
     ,
     newButton("Next")
         .center()
@@ -219,3 +229,27 @@ newTrialEnterCategoryWords("enter-occupations-words-trial", 'occupations', targe
 
 newTrialClickCategoryWords('click-clothes-words-trial', 'clothes', targetWords, targetClothes);
 newTrialEnterCategoryWords("enter-clothes-words-trial", 'clothes', targetClothes);
+
+
+// Send results manually
+SendResults("send")
+
+// Completion screen
+newTrial("completion_screen",
+    newText("thanks", "<h3>Well done!</h3>")
+        .center()
+        .print()
+    ,
+    newText("thanks", "TODO: explanation about the experiment.")
+        .css("margin-bottom","2em")
+        .center()
+        .print()
+    ,
+    newText("thanks", "Thank you for participating! You may now exit the window.")
+        .css("margin-bottom","2em")
+        .center()
+        .print()
+    ,
+    newButton("void", "")
+        .wait()
+)
