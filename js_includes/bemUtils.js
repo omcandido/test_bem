@@ -27,42 +27,37 @@ function drawRandomSample(arr, num) {
 /**
  * Returns the necessary PCIbex elements to display a sequence of words.
  * @param {Array} words An array containing the words to display.
- * @param {int} displayTime Milliseconds that each words will be displayed.
- * @param {int} waitTime Milliseconds to wait between each word.
  */
-function generateElementsDisplayWords(words, displayTime, waitTime) {
+function generateElementsDisplayWords(words) {
     var elemsShowWords = []
     words.forEach( word => {
         elemsShowWords.push.apply(elemsShowWords, [
             newText("word"+word, word)
-                .css("font-size", "24pt")
+                .css("font-size", "48pt")
                 .center()
                 .print()
             ,
-            newTimer("timerWord"+word, displayTime)
+            getTimer("timerDisplay")
                 .start()
                 .wait()
             ,
             getText("word"+word).remove()
             ,
-            newTimer("timerWait"+word, waitTime)
+            getTimer("timerWait")
                 .start()
                 .wait()
+            ,
+            getVar("seenWords")
+                .set(v=>v+1)
+            ,
+            getText("counter")
+                .text( getVar("seenWords") )
+            ,
         ])
     });
     
     return elemsShowWords
 }
-
-/**
- * Returns a custom trial where the sequence of ALL words is displayed.
- * @param {String} trialName Machine name of the trial.
- * @param {Array} words An array containing the words to display.
- * @param {int} displayTime Milliseconds that each words will be displayed.
- * @param {int} waitTime Milliseconds to wait between each word.
- */
-newTrialDisplayAllWords = (trialName, words, displayTime = 3000, waitTime = 100) =>
-    newTrial(trialName, ...generateElementsDisplayWords(words, displayTime, waitTime))
 
 /**
  * Returns a custom trial where the sequence of all the words in a category words is displayed.
@@ -73,19 +68,33 @@ newTrialDisplayAllWords = (trialName, words, displayTime = 3000, waitTime = 100)
  * @param {int} waitTime Milliseconds to wait between each word.
  */    
 newTrialDisplayCategoryWords = (trialName, category, words, displayTime, waitTime) => newTrial(trialName,
-    newText('text-'+category, 'You will now see 6 ' + category.toUpperCase() + ' words').print()
+    newText('instructions', 'You will now see 6 ' + category.toUpperCase() + ' words. Please try to visualise each of them.')
+        .css("margin-bottom", "2em")
+        .print()
     ,
-    newButton('next-'+category, 'Next')
+    newButton('Start')
+        .center()
         .print()
         .wait()
     ,    
-    getText('text-'+category).remove()
+    getText("instructions").remove()
     ,
-    getButton('next-'+category).remove()
+    getButton('Start').remove()
     ,
-    newText('title-'+category, category.toUpperCase()+' words').print()
+    newVar("seenWords", 1)
     ,
-    ...generateElementsDisplayWords(words, displayTime, waitTime)
+    newText("counter", '1')
+        .before(newText(category.toUpperCase() + " words: "))
+        .after(newText("/6"))
+        .center()
+        .css("margin-bottom", "3em")
+        .print()
+    ,
+    newTimer("timerDisplay", displayTime)
+    ,
+    newTimer("timerWait", waitTime)
+    ,
+    ...generateElementsDisplayWords(words)
 )
 
 /**
@@ -150,7 +159,12 @@ newFillerButton = (name,text) => newButton(name, (text||name))
  * @param {Array} categoryWords An array containing the target words of the given category.
  */
 newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) => newTrial(trialName,
-    newText("Please click on all " + category.toUpperCase() + " words.").print()
+    newText("<h3>Please click on all words of the category: " + category.toUpperCase() + "</h3>")
+        .print()
+    ,
+    newText("If you click on a word of the right category, it will turn red. There is a total of 6 words.")
+        .css("margin-bottom", "2em")
+        .print()
     ,
     newVar("targetsLeft", 6)
     ,
@@ -178,52 +192,78 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
  * @param {Array} words An array containing the target words of the given category.
  */
 newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
-    newText("Enter all the " + category.toUpperCase() + " words:").print()
+    newText("<h3>Enter all these " + category.toUpperCase() + " words.</h3>")
+        .print()
     ,
-    newCanvas("container", 400, 250)
+    newText("Please enter the 6 words below in its corresponding box on the right. Enter only one word per box. Click the button when you are done.")
+        .css("margin-bottom", "2em")
+        .print()
     ,
-    newText("labelWord0",words[0]).print(0, 0, getCanvas("container")),
-    newText("labelWord1",words[1]).print(0, 40, getCanvas("container")),
-    newText("labelWord2",words[2]).print(0, 80, getCanvas("container")),
-    newText("labelWord3",words[3]).print(0, 120, getCanvas("container")),
-    newText("labelWord4",words[4]).print(0, 160, getCanvas("container")),
-    newText("labelWord5",words[5]).print(0, 200, getCanvas("container"))
+    newCanvas("container", 400, 250).center()
     ,
-    newTextInput("inputWord0").print(150, 0, getCanvas("container")),
-    newTextInput("inputWord1").print(150, 40, getCanvas("container")),
-    newTextInput("inputWord2").print(150, 80, getCanvas("container")),
-    newTextInput("inputWord3").print(150, 120, getCanvas("container")),
-    newTextInput("inputWord4").print(150, 160, getCanvas("container")),
-    newTextInput("inputWord5").print(150, 200, getCanvas("container"))
+    newText("labelWord0",words[0]).print(0, 0, getCanvas("container")).css("user-select", "none"),
+    newText("labelWord1",words[1]).print(0, 40, getCanvas("container")).css("user-select", "none"),
+    newText("labelWord2",words[2]).print(0, 80, getCanvas("container")).css("user-select", "none"),
+    newText("labelWord3",words[3]).print(0, 120, getCanvas("container")).css("user-select", "none"),
+    newText("labelWord4",words[4]).print(0, 160, getCanvas("container")).css("user-select", "none"),
+    newText("labelWord5",words[5]).print(0, 200, getCanvas("container")).css("user-select", "none")
+    ,
+    newTextInput("inputWord0").print(100, 0, getCanvas("container")).size(100),
+    newTextInput("inputWord1").print(100, 40, getCanvas("container")).size(100),
+    newTextInput("inputWord2").print(100, 80, getCanvas("container")).size(100),
+    newTextInput("inputWord3").print(100, 120, getCanvas("container")).size(100),
+    newTextInput("inputWord4").print(100, 160, getCanvas("container")).size(100),
+    newTextInput("inputWord5").print(100, 200, getCanvas("container")).size(100)
     ,
     getCanvas("container").print()
     ,
+    newText("warning", "Words in red have errors: please enter all the words exacltly as they appear. Enter each word in the box of the right.").css("color", "red")
+    ,
     newButton("Next")
         .print()
+        .css("margin-bottom", "1em")
         .wait(
             getTextInput("inputWord0").test.text(getText("labelWord0").value)
             .and(getTextInput("inputWord0").test.text(getText("labelWord0").value)
-                .failure(getText('labelWord0').css("color","red"))
+                .failure(
+                    getText('labelWord0').css("color", "red"),
+                    getText('warning').print()
+                )
                 .success(getText('labelWord0').css("color","blue"))
             )    
             .and(getTextInput("inputWord1").test.text(getText("labelWord1").value)
-                .failure(getText('labelWord1').css("color","red"))
+                .failure(
+                    getText('labelWord1').css("color", "red"),
+                    getText('warning').print()
+                )
                 .success(getText('labelWord1').css("color","blue"))
             )    
             .and(getTextInput("inputWord2").test.text(getText("labelWord2").value)
-                .failure(getText('labelWord2').css("color","red"))
+                .failure(
+                    getText('labelWord2').css("color", "red"),
+                    getText('warning').print()
+                )
                 .success(getText('labelWord2').css("color","blue"))
             )
             .and(getTextInput("inputWord3").test.text(getText("labelWord3").value)
-                .failure(getText('labelWord3').css("color","red"))
+                .failure(
+                    getText('labelWord3').css("color", "red"),
+                    getText('warning').print()
+                )
                 .success(getText('labelWord3').css("color","blue"))
                 )
             .and(getTextInput("inputWord4").test.text(getText("labelWord4").value)
-                .failure(getText('labelWord4').css("color","red"))
+                .failure(
+                    getText('labelWord4').css("color", "red"),
+                    getText('warning').print()
+                )
                 .success(getText('labelWord4').css("color","blue"))
                 )
             .and(getTextInput("inputWord5").test.text(getText("labelWord5").value)
-                .failure(getText('labelWord5').css("color","red"))
+                .failure(
+                    getText('labelWord5').css("color", "red"),
+                    getText('warning').print()
+                )
                 .success(getText('labelWord5').css("color","blue"))
                 )                
         )
