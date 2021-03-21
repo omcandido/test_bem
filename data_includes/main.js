@@ -16,8 +16,8 @@ const targetClothes = drawRandomSample(baseClothes, 6)
 const targetWords = targetFood.concat(targetAnimals, targetOccupations, targetClothes)
 
 // Parameters regarding the display and waiting time of single words.
-const displayTime = 300;
-const waitTime = 10;
+const displayTime = 3000;
+const waitTime = 100;
 
 // DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
 
