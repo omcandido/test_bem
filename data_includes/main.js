@@ -35,7 +35,9 @@ newTrial("welcome",
     ,
     newText("Thank you for participating in this experiment.<br>The session takes <strong>approximately 15 minutes</strong>, so it is important that you do not get interrupted during this time. Some of the tasks require that you look at some video or some words for a certain amount of time, so we would like to ask you in advance to really <strong>focus on the tasks</strong>, even if you do not understand the purpose of what you are doing. At the end of the session, a short explanation of the aim of the experiment will be given.")
     ,
-    newButton("Start")
+    newText("By clicking on the button below you agree to participate in this experiment. All the data collected is anonymous. You can stop your participation in the experiment at any point.")
+    ,
+    newButton("I have read the above and I want to continue")
         .center()
         .print()
         .wait()
@@ -45,6 +47,9 @@ newTrial("welcome",
 
 // ------------- Demographics questions -------------
 newTrial( "demographics-age",
+    newText("<h4>We will now ask you a few questions. We remind you that all your answers are anonymous.</h4>")
+        .print()
+    ,
     newText("What is your age?")
         .css("margin-bottom", "1em")
         .print()
@@ -77,7 +82,14 @@ newTrial("demographics-gender",
 
 
 newTrial("demographics-bored",
-    newText("I am easily bored")
+    newText("To what extent do you agree with the following statement?:")
+        .css("margin-bottom", "1em")
+        .print()
+    ,
+    newText('"I am easily bored"')
+        .css("margin-bottom", "2em")
+        .css("font-style", "italic")
+        .center()
         .print()
     ,
     newScale("bored", "Very untrue", "Untrue", "Neutral", "True", "Very True")  
@@ -89,7 +101,14 @@ newTrial("demographics-bored",
 )
 
 newTrial("demographics-movies",
-    newText("I often enjoy seeing movies I’ve seen before")
+    newText("To what extent do you agree with the following statement?:")
+        .css("margin-bottom", "1em")
+        .print()
+    ,
+    newText('"I often enjoy seeing movies I’ve seen before"')
+        .css("margin-bottom", "2em")
+        .css("font-style", "italic")
+        .center()
         .print()
     ,
     newScale("movies", "Very untrue", "Untrue", "Neutral", "True", "Very True")
@@ -105,7 +124,7 @@ newTrial("demographics-movies",
 newTrial("instructions-relaxation",
     newVar("secondsLeft", 180)
     ,
-    newText("Watch the following video for 3 min and try to relax:")
+    newText("We now ask you to try to relax for 3 minutes before the main exercise begins. To help you, we provide you with a calming video below:")
         .print()
         .css('margin-bottom', '2em')
     ,
