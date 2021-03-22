@@ -166,7 +166,7 @@ newTrial("instructions-show-words",
     newText("Now 48 words will be displayed in intervals of 3 seconds. We ask you to <strong>visualise each word</strong> (for example, if the word is \"tree\", try to visualise a tree).<br> Click on the button when you are ready.")
         .css("margin-bottom", "2em")
     ,
-    newButton("Click to start the experiment")
+    newButton("Start")
         .center()
         .print()
         .wait()
