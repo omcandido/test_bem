@@ -129,7 +129,6 @@ newTrial("instructions-relaxation",
     ,
     newText("The following screens contain instructions about different tasks. Please read them carefully and try to keep focused during the task.")
         .print()
-        .css('margin-bottom', '1em')
     ,
     newText("We now ask you to <strong>try to relax</strong> before the experiment begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on \"Next\" when you are ready to continue.")
         .print()
@@ -137,7 +136,7 @@ newTrial("instructions-relaxation",
     ,
     newVideo("myVideo", "relax_video.mp4")
         .center()
-        .size("600", "337.5")
+        .size("444.44", "250")
         .css('margin-bottom', '2em')
         .print()
     ,
