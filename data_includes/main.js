@@ -2,18 +2,18 @@
 PennController.ResetPrefix(null)
 
 // Merge all category words into a single array.
-var rndWords = baseFood.concat(baseAnimals, baseOccupations, baseClothes)
+var rndWords = basefoods.concat(baseAnimals, baseOccupations, baseclothing)
 // Shuffle the array in place.
 shuffle(rndWords)
 
 // Draw 6 words from each category and store them in a constant.
-const targetFood = drawRandomSample(baseFood, 6)
+const targetfoods = drawRandomSample(basefoods, 6)
 const targetAnimals = drawRandomSample(baseAnimals, 6)
 const targetOccupations = drawRandomSample(baseOccupations, 6)
-const targetClothes = drawRandomSample(baseClothes, 6)
+const targetclothing = drawRandomSample(baseclothing, 6)
 
 // Merge all drawn words for convenience to log them.
-const targetWords = targetFood.concat(targetAnimals, targetOccupations, targetClothes)
+const targetWords = targetfoods.concat(targetAnimals, targetOccupations, targetclothing)
 
 // Parameters regarding the display and waiting time of single words.
 const displayTime = 3000;
@@ -206,7 +206,7 @@ newTrial("instructions-training-1",
     newText("<h3>Second part</h3>")
         .print()
     ,
-    newText("Now you will be asked to visualise again some of the words you saw before. As in the first exercise, try to picture in your mind what each word represents.")
+    newText("You will now be shown 24 of the words you saw earlier, divided into 4 categories: Foods, Animals, Occupations, and Clothing. As you see each word, try to form an image of the thing it refers to (e.g., if the word is <i>tree</i>, visualize a tree).")
         .center()
         .print()
         .css("margin-bottom", "2em")
@@ -218,10 +218,10 @@ newTrial("instructions-training-1",
 );
 
 // ------------- Training 1: show all target words per category -------------
-newTrialDisplayCategoryWords("show-food-words-trial", 'food', targetFood, displayTime, waitTime)
+newTrialDisplayCategoryWords("show-foods-words-trial", 'foods', targetfoods, displayTime, waitTime)
 newTrialDisplayCategoryWords("show-animals-words-trial", 'animals', targetAnimals, displayTime, waitTime)
 newTrialDisplayCategoryWords("show-occupations-words-trial", 'occupations', targetOccupations, displayTime, waitTime)
-newTrialDisplayCategoryWords("show-clothes-words-trial", 'clothes', targetClothes, displayTime, waitTime)
+newTrialDisplayCategoryWords("show-clothing-words-trial", 'clothing', targetclothing, displayTime, waitTime)
 
 // ------------- Instructions training 2-------------
 newTrial("instructions-training-2",
@@ -237,17 +237,17 @@ newTrial("instructions-training-2",
 );
 
 // ------------- Training 2: click on every category word and then write it down -------------
-newTrialClickCategoryWords('click-food-words-trial', 'food', targetWords, targetFood);
-newTrialEnterCategoryWords("enter-food-words-trial", 'food', targetFood);
+newTrialClickCategoryWords('click-foods-words-trial', 'foods', targetWords, targetfoods);
+newTrialEnterCategoryWords("enter-foods-words-trial", 'foods', targetfoods);
 
 newTrialClickCategoryWords('click-animals-words-trial', 'animals', targetWords, targetAnimals);
-newTrialEnterCategoryWords("enter-food-words-trial", 'animals', targetAnimals);
+newTrialEnterCategoryWords("enter-foods-words-trial", 'animals', targetAnimals);
 
 newTrialClickCategoryWords('click-occupations-words-trial', 'occupations', targetWords, targetOccupations);
 newTrialEnterCategoryWords("enter-occupations-words-trial", 'occupations', targetOccupations);
 
-newTrialClickCategoryWords('click-clothes-words-trial', 'clothes', targetWords, targetClothes);
-newTrialEnterCategoryWords("enter-clothes-words-trial", 'clothes', targetClothes);
+newTrialClickCategoryWords('click-clothing-words-trial', 'clothing', targetWords, targetclothing);
+newTrialEnterCategoryWords("enter-clothing-words-trial", 'clothing', targetclothing);
 
 
 // Send results manually

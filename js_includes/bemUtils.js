@@ -68,23 +68,23 @@ function generateElementsDisplayWords(words) {
  * @param {int} waitTime Milliseconds to wait between each word.
  */    
 newTrialDisplayCategoryWords = (trialName, category, words, displayTime, waitTime) => newTrial(trialName,
-    newText('instructions', 'You will now see 6 ' + category.toUpperCase() + ' words. Please try to visualise each of them.<br>Click on the button when you are ready.')
-        .css("margin-bottom", "2em")
-        .print()
-    ,
-    newButton('Start')
-        .center()
-        .print()
-        .wait()
-    ,    
-    getText("instructions").remove()
-    ,
-    getButton('Start').remove()
-    ,
+    // newText('instructions', 'You will now see 6 ' + category.toUpperCase() + ' words. Please try to visualise each of them.<br>Click on the button when you are ready.')
+    //     .css("margin-bottom", "2em")
+    //     .print()
+    // ,
+    // newButton('Start')
+    //     .center()
+    //     .print()
+    //     .wait()
+    // ,    
+    // getText("instructions").remove()
+    // ,
+    // getButton('Start').remove()
+    // ,
     newVar("seenWords", 1)
     ,
     newText("counter", '1')
-        .before(newText(category.toUpperCase() + " words: "))
+        .before(newText(category.toUpperCase() + ": "))
         .after(newText("/6"))
         .center()
         .css("margin-bottom", "3em")
