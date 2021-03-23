@@ -170,7 +170,7 @@ newTrial("instructions-relaxation",
 newTrial("instructions-show-words",
     defaultText.center().print()
     ,
-    newText("Now 48 words will be displayed in intervals of 3 seconds. We ask you to <strong>visualise each word</strong> (for example, if the word is \"tree\", try to visualise a tree).<br> Click on the button when you are ready.")
+    newText("Now, 48 words will be displayed in intervals of 3 seconds. As you see each word, try to form an image of the thing it refers to (e.g., if the word is <i>tree</i>, visualize a tree).<br> Click on the button when you are ready.")
         .css("margin-bottom", "2em")
     ,
     newButton("Start")
