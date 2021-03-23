@@ -124,7 +124,14 @@ newTrial("demographics-movies",
 newTrial("instructions-relaxation",
     // newVar("secondsLeft", 180)
     // ,
-    newText("We now ask you to try to relax before the main exercise begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on \"Next\" when you are ready to continue.")
+    newText("<h3>Relax and focus</h3>")
+        .print()
+    ,
+    newText("The following screens contain instructions about different tasks. Please read them carefully and try to keep focused during the task.")
+        .print()
+        .css('margin-bottom', '1em')
+    ,
+    newText("We now ask you to <strong>try to relax</strong> before the experiment begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on \"Next\" when you are ready to continue.")
         .print()
         .css('margin-bottom', '2em')
     ,
