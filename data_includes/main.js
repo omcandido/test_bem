@@ -61,7 +61,7 @@ newTrial( "demographics-age",
     ,
     newText("warning", "Enter a valid number (e.g. 25)").css("color", "red")
     ,
-    newButton('Next')
+    newButton('Continue')
         .print()
         .wait(getTextInput("age-input").test.text(/^[0-9]+$/)
             .failure(getText("warning").print())
@@ -122,9 +122,9 @@ newTrial("demographics-movies",
 
 // ------------- Relaxation screen -------------
 newTrial("instructions-relaxation",
-    newVar("secondsLeft", 180)
-    ,
-    newText("We now ask you to try to relax for 3 minutes before the main exercise begins. To help you, we provide you with a calming video below:")
+    // newVar("secondsLeft", 180)
+    // ,
+    newText("We now ask you to try to relax before the main exercise begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on the button below when you are ready to continue.")
         .print()
         .css('margin-bottom', '2em')
     ,
@@ -133,30 +133,32 @@ newTrial("instructions-relaxation",
         .size("600", "337.5")
         .css('margin-bottom', '2em')
         .print()
-        .disable(0.01)
-        .play()
+        .wait()
     ,
-    newText("counter", '180')
-        .before(newText("Time left: "))
-        .after(newText("s"))
+    // newText("counter", '180')
+    //     .before(newText("Time left: "))
+    //     .after(newText("s"))
+    //     .center()
+    //     .print()
+    // ,
+    // newTimer("timer", 1000)
+    //     .callback(
+    //         getVar("secondsLeft")
+    //             .set(v=>v-1)
+    //             .test.is(0)
+    //             .success( getButton("Continue").click() )
+    //         ,
+    //         getText("counter")
+    //             .text( getVar("secondsLeft") )
+    //         ,
+    //         getTimer("timer").start()
+    //     )
+    //     .start()
+    // ,
+    newButton('Continue')
         .center()
         .print()
-    ,
-    newTimer("timer", 1000)
-        .callback(
-            getVar("secondsLeft")
-                .set(v=>v-1)
-                .test.is(0)
-                .success( getButton("Next").click() )
-            ,
-            getText("counter")
-                .text( getVar("secondsLeft") )
-            ,
-            getTimer("timer").start()
-        )
-        .start()
-    ,
-    newButton('Next').wait()
+        .wait()
 );
 
 // ------------- Instructions display -------------
@@ -196,7 +198,7 @@ newTrial("recall-trial",
         .log()
         .print()
     ,
-    newButton("next", "Next")
+    newButton("continue", "Continue")
         .print()
         .wait()
 )
@@ -211,7 +213,7 @@ newTrial("instructions-training-1",
         .print()
         .css("margin-bottom", "2em")
     ,
-    newButton("Next")
+    newButton("Continue")
         .center()
         .print()
         .wait()
@@ -230,7 +232,7 @@ newTrial("instructions-training-2",
         .print()
         .css("margin-bottom", "2em")
     ,
-    newButton("Next")
+    newButton("Continue")
         .center()
         .print()
         .wait()

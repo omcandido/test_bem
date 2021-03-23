@@ -139,7 +139,7 @@ newTargetButton = (name,text) => newButton(name, (text||name))
             .success(
                 getText("done").print()
                 ,
-                getButton("Next").print()
+                getButton("Continue").print()
                 ,
                 getText("counter").remove()
             )
@@ -188,11 +188,11 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
         .before( newText("# words left: ") )
         .print()
     ,
-    newText("done", "Well done! Click on \"Next\" to move on to the next screen.")
+    newText("done", "Well done! Click on \"Continue\" to move on to the next screen.")
         .css("color", "blue")
         .css("margin", "2em 0 1em 0")
     ,
-    newButton("Next")
+    newButton("Continue")
         .center()
         .wait()
 );
@@ -231,7 +231,7 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     ,
     newText("warning", "Words in red have errors: please enter all the words exacltly as they appear. Enter each word in the box of the right.").css("color", "red")
     ,
-    newButton("Next")
+    newButton("Continue")
         .print()
         .css("margin-bottom", "1em")
         .wait(
