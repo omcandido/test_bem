@@ -136,7 +136,13 @@ newTargetButton = (name,text) => newButton(name, (text||name))
         getVar("targetsLeft")
             .set(v=>v-1)
             .test.is(0)
-            .success( getButton("Next").click() )
+            .success(
+                getText("done").print()
+                ,
+                getButton("Next").print()
+                ,
+                getText("counter").remove()
+            )
         ,
         getText("counter")
             .text( getVar("targetsLeft") )
@@ -182,7 +188,13 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
         .before( newText("# words left: ") )
         .print()
     ,
-    newButton("Next").wait()
+    newText("done", "Well done! Click on \"Next\" to move on to the next screen.")
+        .css("color", "blue")
+        .css("margin", "2em 0 1em 0")
+    ,
+    newButton("Next")
+        .center()
+        .wait()
 );
 
 /**
