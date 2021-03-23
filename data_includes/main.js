@@ -61,7 +61,7 @@ newTrial( "demographics-age",
     ,
     newText("warning", "Enter a valid number (e.g. 25)").css("color", "red")
     ,
-    newButton('Continue')
+    newButton("Next")
         .print()
         .wait(getTextInput("age-input").test.text(/^[0-9]+$/)
             .failure(getText("warning").print())
@@ -124,7 +124,7 @@ newTrial("demographics-movies",
 newTrial("instructions-relaxation",
     // newVar("secondsLeft", 180)
     // ,
-    newText("We now ask you to try to relax before the main exercise begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on the button below when you are ready to continue.")
+    newText("We now ask you to try to relax before the main exercise begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on \"Next\" when you are ready to continue.")
         .print()
         .css('margin-bottom', '2em')
     ,
@@ -133,7 +133,6 @@ newTrial("instructions-relaxation",
         .size("600", "337.5")
         .css('margin-bottom', '2em')
         .print()
-        .wait()
     ,
     // newText("counter", '180')
     //     .before(newText("Time left: "))
@@ -146,7 +145,7 @@ newTrial("instructions-relaxation",
     //         getVar("secondsLeft")
     //             .set(v=>v-1)
     //             .test.is(0)
-    //             .success( getButton("Continue").click() )
+    //             .success( getButton("Next").click() )
     //         ,
     //         getText("counter")
     //             .text( getVar("secondsLeft") )
@@ -155,7 +154,7 @@ newTrial("instructions-relaxation",
     //     )
     //     .start()
     // ,
-    newButton('Continue')
+    newButton("Next")
         .center()
         .print()
         .wait()
@@ -198,7 +197,7 @@ newTrial("recall-trial",
         .log()
         .print()
     ,
-    newButton("continue", "Continue")
+    newButton("Next", "Next")
         .print()
         .wait()
 )
@@ -213,7 +212,7 @@ newTrial("instructions-training-1",
         .print()
         .css("margin-bottom", "2em")
     ,
-    newButton("Continue")
+    newButton("Next")
         .center()
         .print()
         .wait()
@@ -232,7 +231,7 @@ newTrial("instructions-training-2",
         .print()
         .css("margin-bottom", "2em")
     ,
-    newButton("Continue")
+    newButton("Next")
         .center()
         .print()
         .wait()
