@@ -56,6 +56,7 @@ newTrial( "demographics-age",
     ,
     newTextInput("age-input")
         .size(50)
+        .lines(1)
         .css("margin-bottom", "2em")
         .print()
     ,
@@ -130,16 +131,20 @@ newTrial("instructions-relaxation",
     newText("The following screens contain instructions about different tasks. Please read them carefully and try to keep focused during the task.")
         .print()
     ,
-    newText("We now ask you to <strong>try to relax</strong> before the experiment begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on \"Next\" when you are ready to continue.")
+    newText("We now ask you to <strong>try to relax</strong> before the experiment begins. Take a few minutes if necessary.<br> Click on \"Next\" when you are ready to continue.")
         .print()
         .css('margin-bottom', '2em')
     ,
-    newVideo("myVideo", "relax_video.mp4")
-        .center()
-        .size("444.44", "250")
-        .css('margin-bottom', '2em')
-        .print()
-    ,
+    // newText("We now ask you to <strong>try to relax</strong> before the experiment begins. Feel free to watch the following 3-min video if you find it helpful to relax. Click on \"Next\" when you are ready to continue.")
+    //     .print()
+    //     .css('margin-bottom', '2em')
+    // ,
+    // newVideo("myVideo", "relax_video.mp4")
+    //     .center()
+    //     .size("444.44", "250")
+    //     .css('margin-bottom', '2em')
+    //     .print()
+    // ,
     // newText("counter", '180')
     //     .before(newText("Time left: "))
     //     .after(newText("s"))

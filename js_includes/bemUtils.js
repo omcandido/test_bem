@@ -110,11 +110,11 @@ function generateButtons(targetWords, categoryWords) {
         
         if (categoryWords.includes(word)) {
             trialElems.push(
-                newTargetButton('button'+word, word).print(pos_X*200, pos_Y*40,getCanvas("container")),
+                newTargetButton('button'+word, word).print(pos_X*200, pos_Y*40,getCanvas("clickingContainer")),
             );
         } else {
             trialElems.push(
-                newFillerButton('button'+word, word).print(pos_X*200, pos_Y*40,getCanvas("container")),
+                newFillerButton('button'+word, word).print(pos_X*200, pos_Y*40,getCanvas("clickingContainer")),
             );
         }
     });
@@ -131,7 +131,8 @@ newTargetButton = (name,text) => newButton(name, (text||name))
     .callback(
         getButton(name)
             .disable()
-            .css("color","red")
+            .css("background-color", "red")
+            .css("color","white")
         ,
         getVar("targetsLeft")
             .set(v=>v-1)
@@ -174,13 +175,13 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
     ,
     newVar("targetsLeft", 6)
     ,
-    newCanvas("container", 800, 250)
+    newCanvas("clickingContainer", 800, 250)
     ,
     newSelector("buttons").disableClicks()
     ,
     ...generateButtons(targetWords, categoryWords)
     ,
-    getCanvas("container").print()
+    getCanvas("clickingContainer").print()
     ,
     getSelector("buttons").shuffle()
     ,
@@ -207,27 +208,27 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     newText("<h3>Enter all these " + category.toUpperCase() + " words.</h3>")
         .print()
     ,
-    newText("Please enter the 6 words below in its corresponding box on the right. Enter only one word per box. Click on the button when you are done.")
+    newText("Please enter the 6 words below in its corresponding box on the right. Enter only one word per box. So, for example, if the word on the left is <i>tree</i>, you type <i>tree</i> in the box to the right of the word.<br>Click on the button when you are done.")
         .css("margin-bottom", "2em")
         .print()
     ,
-    newCanvas("container", 400, 250).center()
+    newCanvas("enterContainer", 400, 250).center()
     ,
-    newText("labelWord0",words[0]).print(0, 0, getCanvas("container")).css("user-select", "none"),
-    newText("labelWord1",words[1]).print(0, 40, getCanvas("container")).css("user-select", "none"),
-    newText("labelWord2",words[2]).print(0, 80, getCanvas("container")).css("user-select", "none"),
-    newText("labelWord3",words[3]).print(0, 120, getCanvas("container")).css("user-select", "none"),
-    newText("labelWord4",words[4]).print(0, 160, getCanvas("container")).css("user-select", "none"),
-    newText("labelWord5",words[5]).print(0, 200, getCanvas("container")).css("user-select", "none")
+    newText("labelWord0",words[0]).print(0, 0, getCanvas("enterContainer")).css("user-select", "none"),
+    newText("labelWord1",words[1]).print(0, 40, getCanvas("enterContainer")).css("user-select", "none"),
+    newText("labelWord2",words[2]).print(0, 80, getCanvas("enterContainer")).css("user-select", "none"),
+    newText("labelWord3",words[3]).print(0, 120, getCanvas("enterContainer")).css("user-select", "none"),
+    newText("labelWord4",words[4]).print(0, 160, getCanvas("enterContainer")).css("user-select", "none"),
+    newText("labelWord5",words[5]).print(0, 200, getCanvas("enterContainer")).css("user-select", "none")
     ,
-    newTextInput("inputWord0").print(100, 0, getCanvas("container")).size(100),
-    newTextInput("inputWord1").print(100, 40, getCanvas("container")).size(100),
-    newTextInput("inputWord2").print(100, 80, getCanvas("container")).size(100),
-    newTextInput("inputWord3").print(100, 120, getCanvas("container")).size(100),
-    newTextInput("inputWord4").print(100, 160, getCanvas("container")).size(100),
-    newTextInput("inputWord5").print(100, 200, getCanvas("container")).size(100)
+    newTextInput("inputWord0").print(100, 0, getCanvas("enterContainer")).size(100),
+    newTextInput("inputWord1").print(100, 40, getCanvas("enterContainer")).size(100),
+    newTextInput("inputWord2").print(100, 80, getCanvas("enterContainer")).size(100),
+    newTextInput("inputWord3").print(100, 120, getCanvas("enterContainer")).size(100),
+    newTextInput("inputWord4").print(100, 160, getCanvas("enterContainer")).size(100),
+    newTextInput("inputWord5").print(100, 200, getCanvas("enterContainer")).size(100)
     ,
-    getCanvas("container").print()
+    getCanvas("enterContainer").print()
     ,
     newText("warning", "Words in red have errors: please enter all the words exacltly as they appear. Enter each word in the box of the right.").css("color", "red")
     ,
