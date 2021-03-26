@@ -157,7 +157,7 @@ newTargetButton = (name,text) => newButton(name, (text||name))
  */
 newFillerButton = (name, text, category) => newButton(name, (text || name))
     .callback(
-        newFunction(()=>window.alert("Wrong: the word " + text.toUpperCase() + " does not belong to this category")).call()
+        newFunction(()=>window.alert("Wrong: the word " + text.toUpperCase() + " does not belong to this category.\nPlease try again.")).call()
     )
     .selector("buttons");
 
