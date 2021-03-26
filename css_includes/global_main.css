@@ -84,3 +84,8 @@ span.retry:visited {
 .PennController-age-input {
   height: 1.5em;
 }
+
+.recall-form input {
+  margin: 5px 5px;
+  width: 90px;
+}

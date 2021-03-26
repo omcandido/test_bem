@@ -110,11 +110,11 @@ function generateButtons(targetWords, categoryWords) {
         
         if (categoryWords.includes(word)) {
             trialElems.push(
-                newTargetButton('button'+word, word).print(pos_X*200, pos_Y*40,getCanvas("clickingContainer")),
+                newTargetButton('button'+word, word).print(pos_X*200, pos_Y*50,getCanvas("clickingContainer")),
             );
         } else {
             trialElems.push(
-                newFillerButton('button'+word, word).print(pos_X*200, pos_Y*40,getCanvas("clickingContainer")),
+                newFillerButton('button'+word, word).print(pos_X*200, pos_Y*50,getCanvas("clickingContainer")),
             );
         }
     });
@@ -155,7 +155,10 @@ newTargetButton = (name,text) => newButton(name, (text||name))
  * @param {String} name Machine name of the button.
  * @param {String} text Text of the button.
  */
-newFillerButton = (name,text) => newButton(name, (text||name))
+newFillerButton = (name, text, category) => newButton(name, (text || name))
+    .callback(
+        newFunction(()=>window.alert("Wrong: the word " + text.toUpperCase() + " does not belong to this category")).call()
+    )
     .selector("buttons");
 
 /**
@@ -175,7 +178,7 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
     ,
     newVar("targetsLeft", 6)
     ,
-    newCanvas("clickingContainer", 800, 250)
+    newCanvas("clickingContainer", 800, 300)
     ,
     newSelector("buttons").disableClicks()
     ,
