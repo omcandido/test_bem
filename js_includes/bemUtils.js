@@ -233,7 +233,7 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     ,
     getCanvas("enterContainer").print()
     ,
-    newText("warning", "Words in red have errors: please enter all the words exacltly as they appear. Enter each word in the box of the right.").css("color", "red")
+    newText("warning", "Words in red have errors: please enter all the words exactly as they appear. Enter each word in the box of the right.").css("color", "red")
     ,
     newButton("Next")
         .print()
