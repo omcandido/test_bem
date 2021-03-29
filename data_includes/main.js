@@ -1,7 +1,7 @@
 // This is to avoid writing "PennController.{something}" everytime
 PennController.ResetPrefix(null)
 
-// DebugOff(); 
+DebugOff(); 
 
 // Merge all category words into a single array.
 var rndWords = basefoods.concat(baseAnimals, baseOccupations, baseclothing)
