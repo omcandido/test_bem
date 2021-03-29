@@ -110,11 +110,11 @@ function generateButtons(targetWords, categoryWords) {
         
         if (categoryWords.includes(word)) {
             trialElems.push(
-                newTargetButton('button'+word, word).print(pos_X*200, pos_Y*50,getCanvas("clickingContainer")),
+                newTargetButton('button'+word, word).print(pos_X*183, pos_Y*40,getCanvas("clickingContainer")),
             );
         } else {
             trialElems.push(
-                newFillerButton('button'+word, word).print(pos_X*200, pos_Y*50,getCanvas("clickingContainer")),
+                newFillerButton('button'+word, word).print(pos_X*183, pos_Y*40,getCanvas("clickingContainer")),
             );
         }
     });
@@ -131,7 +131,7 @@ newTargetButton = (name,text) => newButton(name, (text||name))
     .callback(
         getButton(name)
             .disable()
-            .css("background-color", "red")
+            .css("background-color", "green")
             .css("color","white")
         ,
         getVar("targetsLeft")
@@ -178,7 +178,7 @@ newTrialClickCategoryWords = (trialName, category, targetWords, categoryWords) =
     ,
     newVar("targetsLeft", 6)
     ,
-    newCanvas("clickingContainer", 800, 300)
+    newCanvas("clickingContainer", 640, 250)
     ,
     newSelector("buttons").disableClicks()
     ,
@@ -211,7 +211,7 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     newText("<h3>Enter all these " + category.toUpperCase() + " words.</h3>")
         .print()
     ,
-    newText("Please enter the 6 words below in its corresponding box on the right. Enter only one word per box. So, for example, if the word on the left is <i>tree</i>, you type <i>tree</i> in the box to the right of the word.<br>Click on the button when you are done.")
+    newText("Please rewrite each word on the left into its respective box on the right. So, for example, if the word on the left is <i>tree</>, you type <i>tree</> in the box to the right of the word.<br>Click on the button when you are done.")
         .css("margin-bottom", "2em")
         .print()
     ,
@@ -233,7 +233,7 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     ,
     getCanvas("enterContainer").print()
     ,
-    newText("warning", "Words in red have errors: please enter all the words exactly as they appear. Enter each word in the box of the right.").css("color", "red")
+    newText("warning", "Words in red have errors: please enter all the words exactly as they appear. Enter each word in the box on the right.").css("color", "red")
     ,
     newButton("Next")
         .print()

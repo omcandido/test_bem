@@ -1,7 +1,7 @@
 // This is to avoid writing "PennController.{something}" everytime
 PennController.ResetPrefix(null)
 
-DebugOff(); 
+// DebugOff(); 
 
 // Merge all category words into a single array.
 var rndWords = basefoods.concat(baseAnimals, baseOccupations, baseclothing)
@@ -35,9 +35,9 @@ newTrial("welcome",
     ,
     newText("<h1>Welcome!</h1>")
     ,
-    newText("Thank you for participating in this experiment.<br>The session takes <strong>approximately 15 minutes</strong>, so it is important that you do not get interrupted during this time. Some of the tasks require that you look at some video or some words for a certain amount of time, so we would like to ask you in advance to really <strong>focus on the tasks</strong>, even if you do not understand the purpose of what you are doing. At the end of the session, a short explanation of the aim of the experiment will be given.")
+    newText("Thank you for participating in this experiment.<br>The session takes <strong>approximately 15 minutes</strong>, so it is important that you do not get interrupted during this time. Some of the tasks require that you look at some words for a certain amount of time, so we would like to ask you in advance to really <strong>focus on the tasks</strong>, even if you do not understand the purpose of what you are doing. At the end of the session, a short explanation of the aim of the experiment will be given.")
     ,
-    newText("By clicking on the button below you agree to participate in this experiment. All the data collected is anonymous. You can stop your participation in the experiment at any point.")
+    newText("By clicking on the button below you agree to participate in this experiment. The data are collected anonymously. You can stop your participation in the experiment at any point.")
     ,
     newButton("I have read the above and I want to continue")
         .center()
@@ -273,7 +273,7 @@ newTrial("completion_screen",
         .center()
         .print()
     ,
-    newText("thanks-1", "This is the end of the experiment. We will use the results from the previous tasks to study memory and how different sets of words affect recall in individuals.")
+    newText("thanks-1", "This is the end of the experiment. We will use the results from the tasks you have just completed to study memory and how different sets of words affect recall in individuals.<br>If you are interested in additional information about the experiment or the results, you can send an email to: a.hoevenaars@students.uu.nl or c.oteromoreira@students.uu.nl")
         .css("margin-bottom","2em")
         .center()
         .print()
