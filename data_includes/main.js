@@ -271,12 +271,12 @@ newTrial("completion_screen",
         .center()
         .print()
     ,
-    newText("thanks", "TODO: explanation about the experiment.")
+    newText("thanks-1", "This is the end of the experiment. We will use the results from the previous tasks to study memory and how different sets of words affect recall in individuals.")
         .css("margin-bottom","2em")
         .center()
         .print()
     ,
-    newText("thanks", "Thank you for participating! You may now exit the window.")
+    newText("thanks-2", "Thank you for participating! You may now exit the window.")
         .css("margin-bottom","2em")
         .center()
         .print()
