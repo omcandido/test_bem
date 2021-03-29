@@ -177,7 +177,7 @@ newTrial("instructions-relaxation",
 newTrial("instructions-show-words",
     defaultText.center().print()
     ,
-    newText("Now, 48 words will be displayed in intervals of 3 seconds. As you see each word, try to form an image of the thing it refers to (e.g., if the word is <i>tree</i>, visualize a tree).<br> It will take about 3 minutes to display all words, so please <strong>try to stay focused</strong> on the task during that time.<br>Click on the button when you are ready.")
+    newText("Now, 48 words will be displayed in intervals of 3 seconds. As you see each word, try to <strong>form an image of the thing it refers to</strong> (e.g., if the word is <i>tree</i>, visualize a tree).<br> It will take about 3 minutes to display all words, so please try <strong>to stay focused</strong> on the task during that time.<br>Click on the button when you are ready.")
         .css("margin-bottom", "2em")
     ,
     newButton("Start")
