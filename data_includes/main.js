@@ -57,6 +57,7 @@ newTrial( "demographics-age",
         .print()
     ,
     newTextInput("age-input")
+        .log("final")
         .size(50)
         .lines(1)
         .css("margin-bottom", "2em")
@@ -76,6 +77,7 @@ newTrial("demographics-gender",
         .print()
     ,
     newScale("gender", "male", "female", "other")  
+        .log()
         .button()
         .center()
         .labelsPosition("top")
@@ -96,6 +98,7 @@ newTrial("demographics-bored",
         .print()
     ,
     newScale("bored", "Very untrue", "Untrue", "Neutral", "True", "Very True")  
+        .log()
         .button()
         .center()
         .labelsPosition("top")
@@ -115,6 +118,7 @@ newTrial("demographics-movies",
         .print()
     ,
     newScale("movies", "Very untrue", "Untrue", "Neutral", "True", "Very True")
+        .log()
         .button()
         .center()
         .labelsPosition("top")
