@@ -5,6 +5,6 @@
 // const baseclothing = ["bikini", "coat", "dress", "hat", "jockstrap", "pantyhose", "parka", "shirt", "shoes", "shorts", "suspenders", "tuxedo"]
 
 const basefoods = ["meat", "cheese", "bread", "rice", "corn", "salad", "soup", "lemon", "vinegar", "spice", "cereal", "tofu"]
-const baseAnimals = ["bird", "lion", "snake", "bee", "goat", "frog", "penguin", "donkey", "dolphin", "panda", "snail", "hamster"]
+const baseAnimals = ["bird", "lion", "snake", "bee", "sheep", "frog", "penguin", "donkey", "dolphin", "panda", "snail", "hamster"]
 const baseOccupations = ["actor", "nurse", "musician", "designer", "consultant", "politician", "waiter", "cleaner", "dentist", "accountant", "tailor", "trucker"]
 const baseclothing = ["dress", "shirt", "hat", "coat", "jeans", "gloves", "skirt", "socks", "shorts", "scarf", "bikini", "parka"]
