@@ -211,7 +211,7 @@ newTrialEnterCategoryWords = (trialName, category, words) => newTrial(trialName,
     newText("<h3>Enter all these " + category.toUpperCase() + " words.</h3>")
         .print()
     ,
-    newText("Please rewrite each word on the left into its respective box on the right. So, for example, if the word on the left is <i>tree</>, you type <i>tree</> in the box to the right of the word.<br>Click on the button when you are done.")
+    newText("Please rewrite each word on the left into its respective box on the right. So, for example, if the word on the left is <i>tree</i>, you type <i>tree</i> in the box to the right of the word.<br>Click on the button when you are done.")
         .css("margin-bottom", "2em")
         .print()
     ,

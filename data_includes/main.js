@@ -1,8 +1,6 @@
 // This is to avoid writing "PennController.{something}" everytime
 PennController.ResetPrefix(null)
 
-DebugOff(); 
-
 // Merge all category words into a single array.
 var rndWords = basefoods.concat(baseAnimals, baseOccupations, baseclothing)
 // Shuffle the array in place.
@@ -34,6 +32,9 @@ newTrial("welcome",
     defaultText.center().print().css('margin-bottom', '2em')
     ,
     newText("<h1>Welcome!</h1>")
+    ,
+    newText("Important: please use a laptop or desktop computer. Phone screens are too small for this experiment to run properly.")
+        .css("color", "red")
     ,
     newText("Thank you for participating in this experiment.<br>The session takes <strong>approximately 15 minutes</strong>, so it is important that you do not get interrupted during this time. Some of the tasks require that you look at some words for a certain amount of time, so we would like to ask you in advance to really <strong>focus on the tasks</strong>, even if you do not understand the purpose of what you are doing. At the end of the session, a short explanation of the aim of the experiment will be given.")
     ,
