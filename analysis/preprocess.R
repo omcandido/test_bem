@@ -357,8 +357,11 @@ t.test(bemDF %>% filter(SSScore>2.5) %>% select(Precog.Score.Weighted),
        paired=FALSE,
        alternative="two.sided")
 
+library(rstatix)
+
 # Effect size:
 bemDF %>% filter(SSScore>2.5) %>% cohens_d(Precog.Score.Weighted ~ 1, mu = 0)
+
 
 # Low SSScore
 t.test(bemDF %>% filter(SSScore<=2.5) %>% select(Precog.Score.Weighted),
@@ -474,7 +477,7 @@ for (i in 1:nReplies) {
 medianLength <- median((extDF %>% filter(TrialID ==1))$Length)
 extDF$medianLength <- extDF$Length - medianLength
 
-# Check the fixed effect hypothesis
+
 m1 <- glmer(WasRecalled ~ 1 + WasTarget + (1 |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
 m2 <- glmer(WasRecalled ~ 1 + WasTarget + (1 |TrialID), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
 m3 <- glmer(WasRecalled ~ 1 + WasTarget + (1 |TrialID) + (1 |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
@@ -491,7 +494,10 @@ m5 <- glmer(WasRecalled ~ 1 + WasTarget + (1 + WasTarget |TrialID) + (1 + WasTar
 m4 <- glmer(WasRecalled ~ 1 + WasTarget + (1 + medianLength |TrialID) + (1 + medianLength |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
 m6 <- glmer(WasRecalled ~ 1 + WasTarget + (1 + log(Frequency) |TrialID) + (1 + log(Frequency) |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
 m7 <- glmer(WasRecalled ~ 1 + WasTarget + (1 + scale(SSScore) |TrialID) + (1 + scale(SSScore) |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
-anova(m1, m2, m3, m4, m5, m6, m7)
+anova(m1, m2, m4, m3, m5, m6, m7)
+
+
+anova(m3, m4)
 
 m3.intercept <- glmer(WasRecalled ~ 1 + (1 |TrialID) + (1 |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
 
@@ -516,10 +522,11 @@ m3.cat <- glmer(WasRecalled ~ 1 + Category + (1 |TrialID) + (1 |Word), extDF, fa
 
 anova(m3.sss, m3.cat)
 
-m3.freq.len <- glmer(WasRecalled ~ 1 + Category + medianLength + log(Frequency) + (1 |TrialID) + (1 |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
+m3.cat.freq.len <- glmer(WasRecalled ~ 1 + Category + medianLength + log(Frequency) + (1 |TrialID) + (1 |Word), extDF, family=binomial(link="logit"), control=glmerControl(optimizer = 'bobyqa'))
 
-anova(m3, m3.cat, m3.freq.len)
+anova(m3, m3.intercept, m3.cat, m3.cat.freq.len, m3.sss)
 
+anova(m3.cat.freq.len, m3.cat)
 
 
 catDF <- extDF %>% filter(Category=="animals") %>% group_by(TrialID) %>% summarise(x = sum(WasRecalled), category = "animals")
@@ -582,3 +589,11 @@ TukeyHSD(res.aov.freq)
 res.aov.len <- aov(len ~ category, data = df_words)
 summary(res.aov.len)
 TukeyHSD(res.aov.len)
+
+mx <- glmer(WasRecalled ~ 1 + Word + (1| TrialID) + (1| Word), extDF,family=binomial(link="logit"))
+
+mx <- lmer(Precognition.Score.Weighted ~ 1 + WasRecalled + (1| Word), extDF)
+
+summary(mx)
+
+anova(m3, m3.intercept, m3.sss, m3.freq.len)
