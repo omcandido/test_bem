@@ -1,3 +1,8 @@
+## Check out the working demo 
+https://farm.pcibex.net/r/XPIuJP/
+
+------------
+
 User documentation at https://github.com/addrummond/ibex/blob/master/docs/manual.md
 
 The following are some notes intended for developers.
