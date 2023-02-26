@@ -1,3 +1,5 @@
+Project submitted by Alissa Hoevenaars and Cándido Otero for the INFOMEPL course at Utrecht University. 
+
 ## Getting started
 Check out
 - the working demo: https://farm.pcibex.net/r/XPIuJP/
