@@ -1,5 +1,8 @@
-## Check out the working demo 
-https://farm.pcibex.net/r/XPIuJP/
+## Getting started
+Check out
+- the working demo: https://farm.pcibex.net/r/XPIuJP/
+- the collected data: https://github.com/omcandido/test_bem/tree/master/analysis
+- the report: https://github.com/omcandido/test_bem/blob/master/Report.pdf
 
 ------------
 
